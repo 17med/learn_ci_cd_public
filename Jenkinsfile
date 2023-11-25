@@ -4,13 +4,26 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                npm i
+                script {
+                    npm i
+                }
             }
         }
-    }
-    stage('Deploy') {
-                steps {
-                    node .
+
+        stage('Test') {
+            steps {
+                script {
+                    echo 'Testing..'
                 }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                script {
+                    node index.js
+                }
+            }
+        }
     }
 }
